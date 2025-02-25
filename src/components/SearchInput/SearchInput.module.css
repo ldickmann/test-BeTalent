@@ -25,14 +25,14 @@
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
-  .input {
+@media (max-width: 430px) {
+  .containerInput {
+    width: 100%;
     max-width: 100%;
   }
-}
 
-@media (max-width: 480px) {
   .input {
-    padding: 12px 8px;
+    width: 100%;
+    max-width: 100%;
   }
 }
