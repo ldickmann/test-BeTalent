@@ -2,13 +2,9 @@
   transition: background-color 0.3s ease;
 }
 
-.tableRow:hover {
-  background-color: var(--white-neutral);
-}
-
 .tableCell {
   padding: 16px 32px;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--gray-10);
 }
 
 .imageCell {
@@ -19,7 +15,6 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  object-fit: cover;
 }
 
 .nameCell {

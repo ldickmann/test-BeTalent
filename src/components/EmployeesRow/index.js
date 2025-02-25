@@ -1,15 +1,28 @@
 import React from "react";
 import styles from "./EmployeesRow.module.css";
 
-// Função que formata a data no padrão BR dd/mm/aaaa
+// Função que formata a data no padrão BR "dd/mm/aaaa"
 function formatDate(dateStr) {
   const date = new Date(dateStr);
   return date.toLocaleDateString("pt-BR");
 }
 
-// Função que formata o número de telefone
+// Função que formata o número de telefone no padrão BR "+55 (XX) XXXXX-XXXX"
 function formatPhone(phoneStr) {
-  return phoneStr.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+  // Remove caracteres não numéricos
+  const numbers = phoneStr.replace(/\D/g, "");
+
+  // Verifica se temos 11 dígitos com o DDD
+  if (numbers.length === 11) {
+    return numbers.replace(/^(\d{2})(\d{5})(\d{4})$/, "+55 ($1) $2-$3");
+  }
+
+  // Verifica se temos 13 dígitos com o DDD e o cod. do país
+  if (numbers.length === 13 && numbers.startsWith("55")) {
+    return numbers.replace(/^55(\d{2})(\d{5})(\d{4})$/, "+55 ($1) $2-$3");
+  }
+
+  return phoneStr;
 }
 
 // Função componente que renderiza cada colaborador na linha da tabela
