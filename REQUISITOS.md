@@ -1,44 +1,78 @@
+# BeTalent Processo Seletivo: Teste Prático
+
 ## Requisitos Gerais
-Deve-se utilizar React.js ou Vanilla JS (JavaScript puro) para construir o projeto.
 
-É permitido utilizar libs externas, mas recomenda-se que seja o mínimo possível.
+- Deve-se utilizar React.js ou Vanilla JS (JavaScript puro) para construir o projeto
+- É permitido utilizar libs externas, mas recomenda-se que seja o mínimo possível
+- A visualização deve ser responsiva
 
-A visualização deve ser responsiva.
+### Estrutura da Tabela
 
 A tabela deve conter as seguintes colunas:
 
-imagem (thumb do/a usuário/a);
-nome;
-cargo
-data de admissão;
-telefone.
-Também deve ser possível realizar pesquisa na tabela por meio de um input. O input de pesquisa deve permitir filtrar dados por cargo, nome e telefone.
+- Imagem (thumb do/a usuário/a)
+- Nome
+- Cargo
+- Data de admissão
+- Telefone
 
-Datas e telefones devem ser formatadas no front-end e não na API.
+### Funcionalidades
 
-Tenha instaladas em sua máquina as ferramentas Git, Node.js e Yarn (ou outro gerenciador de pacotes de sua preferência) para poder trabalhar no projeto.
+- Deve ser possível realizar pesquisa na tabela por meio de um input
+- O input de pesquisa deve permitir filtrar dados por:
+  - Cargo
+  - Nome
+  - Telefone
+- Datas e telefones devem ser formatadas no front-end e não na API
 
-Acesso aos dados da API simulada
-Para ter acesso aos dados que alimentarão o projeto, faça o seguinte:
+### Pré-requisitos
 
-caso você não tenha, instale o pacote json-server;
-clone este repositório do GitHub em sua máquina: https://github.com/BeMobile/desafio-front-end;
-entre na pasta do projeto, em sua máquina, e, por meio da linha de comando, execute o comando json-server --watch db.json, para consumir a API simulada;
-inicie a estrutura e o desenvolvimento do projeto.
-É necessário deixar o json-server rodando no terminal para que os dados sejam visualizados no projeto.
+Tenha instaladas em sua máquina:
 
-Caso você tenha problemas com o json-server, tente rodá-lo com npx json-server db.json ou com yarn json-server <path>/db.json, em que <path> é o caminho completo até o diretório em que o arquivo db.json está localizado. Se mesmo assim não funcionar, busque ajuda na web.
+- Git
+- Node.js
+- Yarn (ou outro gerenciador de pacotes de sua preferência)
 
-Critérios de Avaliação
-Em ordem de relevância, avaliaremos:
+## Acesso aos dados da API simulada
 
-lógica de programação;
-organização (do código e dos arquivos);
-CSS do projeto;
-README, que deve conter, pelo menos, as seguintes informações: sobre o projeto, pré-requisitos e instruções para rodar a aplicação.
-É um diferencial na avaliação o uso de TypeScript.
+Para ter acesso aos dados que alimentarão o projeto:
 
-Envio da Solução
-O projeto deverá ser hospedado em um repositório no seu GitHub. O link do repositório deverá ser fornecido por meio do formulário de Teste Técnico encaminhado ao seu e-mail. Não serão aceitos links de projetos enviados por outros meios.
+1. Instale o pacote json-server
+2. Clone este repositório: `https://github.com/BeMobile/desafio-front-end`
+3. Entre na pasta do projeto e execute:
+   ```bash
+   json-server --watch db.json
+   ```
+4. Inicie a estrutura e o desenvolvimento do projeto
 
-Demais instruções e regras serão instruídas nos formulários e nas comunicações do processo seletivo do qual você está participando.
+> **Nota**: É necessário deixar o json-server rodando no terminal para que os dados sejam visualizados no projeto.
+
+**Alternativas para executar o json-server:**
+
+```bash
+npx json-server db.json
+# ou
+yarn json-server <path>/db.json
+```
+
+## Critérios de Avaliação
+
+Em ordem de relevância:
+
+1. Lógica de programação
+2. Organização (do código e dos arquivos)
+3. CSS do projeto
+4. README (deve conter):
+   - Sobre o projeto
+   - Pré-requisitos
+   - Instruções para rodar a aplicação
+
+**Diferencial**: Uso de TypeScript
+
+## Envio da Solução
+
+- O projeto deve ser hospedado em um repositório no GitHub
+- O link do repositório deverá ser fornecido através do formulário de Teste Técnico
+- Não serão aceitos links de projetos enviados por outros meios
+
+> Demais instruções e regras serão fornecidas nos formulários e nas comunicações do processo seletivo.
