@@ -15,7 +15,9 @@
 .container-title-search {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 32px 0 32px;
+  margin: 32px 0 32px 0;
 }
 
 .title-app {
