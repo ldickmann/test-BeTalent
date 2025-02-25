@@ -1,27 +1,18 @@
-import React, { useState, useEffect } from "react";
-import EmployeesRow from "../EmployeesRow";
+import React, { useState } from "react";
+import EmployeeInfo from "../EmployeesInfo";
 import styles from "./EmployeesTable.module.css";
+import { useResponsive } from "../../hooks/useResponsive";
 
 function EmployeesTable({ employees }) {
   const [expandedRows, setExpandedRows] = useState({});
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 430);
+  const isMobile = useResponsive(430);
 
-  // Modifica o estado isMobile quando a largura da tela for menor ou igual a 430px
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 430);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Retorna a mensagem de nenhum colaborador encontrado caso a lista de colaboradores esteja vazia
+  // Renderiza a mensagem de "Não há colaborador" caso não haja nenhum colaborador
   if (!employees.length) {
-    return <p className={styles.noData}>Nenhum colaborador encontrado</p>;
+    return <p className={styles.noData}>Não há colaborador</p>;
   }
 
-  // Função que alterna a exibição de informações adicionais de um colaborador
+  // Função para expandir ou recolher uma linha da tabela nos dispositivos móveis
   const toggleRow = (id) => {
     setExpandedRows((prev) => ({
       ...prev,
@@ -29,57 +20,7 @@ function EmployeesTable({ employees }) {
     }));
   };
 
-  // Componente para renderizar a tabela em dispositivos móveis
-  const MobileRow = ({ employee }) => {
-    const isExpanded = expandedRows[employee.id];
-
-    return (
-      <div className={styles.mobileRow}>
-        <div className={styles.mobilePrimaryInfo}>
-          <img
-            src={employee.image}
-            alt={employee.name}
-            className={styles.employeeImage}
-          />
-          <span className={styles.employeeName}>{employee.name}</span>
-          <button
-            className={styles.expandButton}
-            onClick={() => toggleRow(employee.id)}
-            aria-expanded={isExpanded}>
-            <img
-              src="/images/icons/chevron-down.svg"
-              alt="Expandir"
-              className={styles.chevronIcon}
-              style={{
-                transform: isExpanded ? "rotate(180deg)" : "none",
-              }}
-            />
-          </button>
-        </div>
-
-        {isExpanded && (
-          <div className={styles.expandedContent}>
-            <div className={styles.expandedRow}>
-              <span className={styles.expandedLabel}>Cargo</span>
-              <span className={styles.expandedValue}>{employee.job}</span>
-            </div>
-            <div className={styles.expandedRow}>
-              <span className={styles.expandedLabel}>Data de admissão</span>
-              <span className={styles.expandedValue}>
-                {new Date(employee.admission_date).toLocaleDateString("pt-BR")}
-              </span>
-            </div>
-            <div className={styles.expandedRow}>
-              <span className={styles.expandedLabel}>Telefone</span>
-              <span className={styles.expandedValue}>{employee.phone}</span>
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  };
-
-  // Renderiza a tabela em dispositivos maiores que 430px
+  // Componente que exibe a tabela de colaboradores
   return (
     <div className={styles.tableContainer}>
       {isMobile ? (
@@ -89,14 +30,17 @@ function EmployeesTable({ employees }) {
             <span>Nome</span>
             <img
               src="/images/icons/circle.svg"
-              alt=""
+              alt="Icone de circulo"
               className={styles.circleIcon}
             />
           </div>
           {employees.map((employee) => (
-            <MobileRow
+            <EmployeeInfo
               key={employee.id}
               employee={employee}
+              isMobile={true}
+              toggleRow={toggleRow}
+              isExpanded={expandedRows[employee.id]}
             />
           ))}
         </div>
@@ -113,9 +57,10 @@ function EmployeesTable({ employees }) {
           </thead>
           <tbody>
             {employees.map((employee) => (
-              <EmployeesRow
+              <EmployeeInfo
                 key={employee.id}
                 employee={employee}
+                isMobile={false}
               />
             ))}
           </tbody>
