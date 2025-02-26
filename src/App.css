@@ -1,6 +1,7 @@
 .container-app {
   background-color: var(--gray-00);
   height: 100vh;
+  padding-bottom: 100px;
 }
 
 .header-app {
@@ -29,6 +30,10 @@
 
 /* Responsividade */
 @media (max-width: 430px) {
+  .container-app {
+    height: auto;
+  }
+
   .container-title-search {
     flex-direction: column;
     align-items: flex-start;
