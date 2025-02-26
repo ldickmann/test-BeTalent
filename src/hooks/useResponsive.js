@@ -1,4 +1,5 @@
 // Arquivo com hooks personalizados
+
 import { useState, useEffect } from "react";
 
 // Hook para verificar se a largura da tela é menor que um determinado breakpoint
