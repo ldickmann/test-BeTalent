@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+// import PropTypes from "prop-types";
 import styles from "./EmployeesInfo.module.css";
 import { formatDate, formatPhone } from "../../utils/formatters";
 
 // Componente que exibe as informações de um colaborador na tabela
 function EmployeeInfo({ employee, isMobile, toggleRow, isExpanded }) {
+  // Estado que armazena a URL da imagem do colaborador
+  const [imageSrc, setImageSrc] = useState(
+    `/images/employees/people-${employee.id}.png`
+  );
+
+  // Caso a imagem do colaborador não exista localmente, carrega a imagem padrão da API
+  useEffect(() => {
+    const img = new Image();
+    img.src = `/images/employees/people-${employee.id}.png`;
+    img.onerror = () => setImageSrc(employee.image);
+  }, [employee.id, employee.image]);
+
   return isMobile ? (
     <div className={styles.mobileRow}>
       <div className={styles.mobilePrimaryInfo}>
         <img
-          src={employee.image}
+          src={imageSrc}
           alt={employee.name}
           className={styles.employeeImage}
         />
@@ -57,7 +70,7 @@ function EmployeeInfo({ employee, isMobile, toggleRow, isExpanded }) {
         data-label="Imagem">
         <img
           className={styles.employeeImage}
-          src={employee.image}
+          src={imageSrc}
           alt={employee.name}
         />
       </td>

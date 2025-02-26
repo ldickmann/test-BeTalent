@@ -28,7 +28,8 @@ Interface responsiva que exibe uma tabela de colaboradores com funcionalidade de
 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/nome-do-repo.git
+git clone https://github.com/ldickmann/test-BeTalent.git
+cd test-BeTalent
 ```
 
 2. Instale as dependências
@@ -63,14 +64,43 @@ A aplicação estará disponível em `http://localhost:3000`
 🔍 Estrutura do Projeto
 
 ```bash
-src/
-  ├── components/
-  │   ├── EmployeesRow/
-  │   ├── EmployeesTable/
-  │   └── SearchInput/
-  ├── styles/
-  │   └── global.css
-  ├── App.js
-  ├── App.css
-  └── index.js
+.
+├── .gitignore
+├── db.json
+├── package.json
+├── public/
+│   ├── images/
+│   │   ├── employees/
+│   │   │   └── people-1.png
+│   │   │   ├── people-3.png
+│   │   │   ├── people-7.png
+│   │   │   ├── people-8.png
+│   │   ├── icons/
+│   │   │   ├── chevron-down.svg
+│   │   │   ├── chevron-up.svg
+│   │   │   ├── circle.svg
+│   │   │   └── search.svg
+│   │   └── logo-be-talent.png
+│   └── index.html
+├── README.md
+├── REQUISITOS.md
+└── src/
+    ├── App.css
+    ├── App.js
+    ├── components/
+    │   ├── EmployeesInfo/
+    │   │   ├── EmployeesInfo.module.css
+    │   │   └── index.js
+    │   ├── EmployeesTable/
+    │   │   ├── EmployeesTable.module.css
+    │   │   └── index.js
+    │   └── SearchInput/
+    │       ├── SearchInput.module.css
+    │       └── index.js
+    ├── hooks/
+    │   └── useResponsive.js
+    ├── index.css
+    ├── index.js
+    └── utils/
+        └── formatters.js
 ```
