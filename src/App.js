@@ -7,7 +7,7 @@ function App() {
   const [employees, setEmployees] = useState([]);
   const [search, setSearch] = useState("");
 
-  // Filtra os colaboradores conforme a busca do usuário
+  // Utiliza o hook useEffect para fazer a requisição dos dados para a API
   useEffect(() => {
     fetch("http://localhost:3001/employees")
       .then((response) => response.json())
@@ -20,7 +20,7 @@ function App() {
     setSearch(event.target.value);
   };
 
-  // Função que filtra os colaboradores conforme a busca
+  // Filtra os colaboradores com base na busca digitada
   const filteredEmployees = employees.filter((emp) => {
     const searchLower = search.toLowerCase();
     return (
